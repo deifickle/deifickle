@@ -7,7 +7,9 @@
 <title><?= h($pageTitle) ?></title>
 <meta name="description" content="<?= h($c['description']) ?>">
 <link rel="alternate" type="application/rss+xml" title="<?= h($c['title']) ?>" href="/index.xml">
-<link rel="icon" href="<?= h($c['logo']) ?>">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/res/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" media="(prefers-color-scheme: light)">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" media="(prefers-color-scheme: dark)">
