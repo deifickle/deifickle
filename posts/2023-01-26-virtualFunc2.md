@@ -5,7 +5,7 @@ description: A dive into abstract types
 tags: [CPP, virtual function, programming]
 ---
 
-In the previous [post]({{< ref "2023-01-22-virtualFunc1" >}}) we saw one basic use-case of a **virtual function**. Here is another awesome use case involving the **virtual** keyword.
+In the previous [post](/posts/2023-01-22-virtualfunc1/) we saw one basic use-case of a **virtual function**. Here is another awesome use case involving the **virtual** keyword.
 
 In the previous post, there was a section on why we should group objects and types based on their common functionalities. The example we took is a typical game where almost all data types have a function to update and render. What if someone forgot to do it? How to enforce this as a rule?
 
@@ -167,4 +167,4 @@ Notice how the `update()` calls go to `Cyclops`'s method whereas all the `render
 
 Was this useful? Let me know on [Twitter](https://twitter.com/madptr) or [Mastodon](https://mastodon.gamedev.place/@madptr)!
 
-[To be continued...]({{< ref "2023-02-15-virtualFunc3" >}})
+[To be continued...](/posts/2023-02-15-virtualfunc3/)

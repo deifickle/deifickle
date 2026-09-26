@@ -4,7 +4,7 @@ type: "page"
 time: false
 ---
 ## Blogs
-|||
+| Link | Topics |
 |-----|-----|
 |[TimDbg](https://www.timdbg.com/)|`Debugging`|
 |[Angelo Pesce](https://c0de517e.blogspot.com/) | `ArtOfCode` `Graphics` `Tools` `Systems`|
@@ -21,13 +21,13 @@ time: false
 _________ 
 
 ## Various
-|||
+| Link | Topics |
 |-----|-----|
 |[Molecular Musings](https://blog.molecular-matters.com/2014/11/06/stateless-layered-multi-threaded-rendering-part-1/)| `Stateless Rendering API`
 |[Dave Kilian blog](https://davekilian.com/cpp-type-erasure.html)| `Type Erasure Explained`
 _________ 
 ## Tutorials
-|||
+| Link | Topics |
 |-----|-----|
 |[Learn OpenGL](https://learnopengl.com)| `OpenGL`|
 |[Anton's OpenGL 4 Tutorials](https://antongerdelan.net/opengl)| `OpenGL`|

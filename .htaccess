@@ -1,0 +1,13 @@
+# Send every request that isn't a real file to index.php, which renders the
+# Markdown. Needs a PHP-enabled site type on NearlyFreeSpeech.net.
+DirectoryIndex index.php
+Options -Indexes
+
+RewriteEngine On
+
+# Never serve the git history, the library code or the settings file.
+RewriteRule ^(\.git|lib)(/|$) - [F,L]
+RewriteRule ^config\.php$ - [F,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]

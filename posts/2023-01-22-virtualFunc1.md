@@ -6,7 +6,7 @@ tags: [CPP, virtual function, programming]
 ---
 
 Have you ever come across the keyword `virtual` in a CPP class and felt that you haven't fully understood it yet?
-In this post, I'll try to explain one basic use case where `virtual` helps us. This is a three part series. The links are [Part-II]({{< ref "2023-01-26-virtualFunc2" >}}) & [Part-III]({{< ref "2023-02-15-virtualFunc3" >}}).
+In this post, I'll try to explain one basic use case where `virtual` helps us. This is a three part series. The links are [Part-II](/posts/2023-01-26-virtualfunc2/) & [Part-III](/posts/2023-02-15-virtualfunc3/).
 
 ## Why do we need different types?
 Let's understand why we need to create different types. The need for different types arises because of the uniqueness of their behavior itself. If such differences can be controlled or managed by using a few variables we can refrain from creating a new type. 
@@ -156,4 +156,4 @@ As the function `getNumDoors()` has been changed to a `virtual` function, the co
 
 I'm just getting started... Was this useful? Let me know your thoughts on [Twitter](https://twitter.com/madptr) or [Mastodon](https://mastodon.gamedev.place/@madptr)!
 
-[To be continued...]({{< ref "2023-01-26-virtualFunc2" >}})
+[To be continued...](/posts/2023-01-26-virtualfunc2/)

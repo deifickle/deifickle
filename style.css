@@ -1,0 +1,52 @@
+:root {
+  --bg: #fdfdfc;
+  --text: #222;
+  --muted: #666;
+  --accent: #b3261e;
+  --rule: #e4e4e0;
+  --code-bg: #f3f3f0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17181a;
+    --text: #e6e6e3;
+    --muted: #9a9a96;
+    --accent: #ff8a80;
+    --rule: #2e3033;
+    --code-bg: #222427;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0 auto;
+  max-width: 44rem;
+  padding: 0 1rem;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+a { color: var(--accent); }
+.site-header {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: .5rem 1rem; padding: 1.25rem 0; border-bottom: 1px solid var(--rule);
+}
+.brand { display: flex; align-items: center; gap: .5rem; font-weight: 700; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+.site-header nav { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
+.site-header nav a { color: var(--muted); text-decoration: none; }
+.site-header nav a:hover { color: var(--accent); }
+main { padding: 1.5rem 0 2rem; }
+h1 { line-height: 1.25; }
+.meta, time { color: var(--muted); font-size: .9rem; }
+.tag { font-size: .85rem; margin-left: .35rem; }
+.post-list, .tag-list { list-style: none; padding: 0; }
+.post-list li { margin-bottom: 1.25rem; }
+.post-list time { display: inline-block; min-width: 7rem; }
+.post-list p { margin: .2rem 0 0; color: var(--muted); }
+pre { overflow-x: auto; background: var(--code-bg); padding: .9rem 1rem; border-radius: 6px; font-size: .9rem; line-height: 1.5; }
+pre code.hljs { padding: 0; background: transparent; }
+:not(pre) > code { background: var(--code-bg); padding: .1em .3em; border-radius: 4px; font-size: .9em; }
+table { border-collapse: collapse; width: 100%; }
+td, th { padding: .3rem .8rem .3rem 0; border-bottom: 1px solid var(--rule); text-align: left; overflow-wrap: anywhere; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2rem 0; }
+img { max-width: 100%; height: auto; }
+.site-footer { display: flex; flex-wrap: wrap; gap: .5rem 1rem; padding: 1.25rem 0 2rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
