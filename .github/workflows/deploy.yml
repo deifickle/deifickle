@@ -37,8 +37,13 @@ jobs:
         if: steps.check.outputs.ready == 'true'
         run: |
           mkdir -p ~/.ssh
-          # Strip Windows line endings, which a key copied on Windows often has.
-          printf '%s\n' "$NFSN_SSH_KEY" | tr -d '\r' > ~/.ssh/deploy_key
+          # The key may be stored as-is or base64-encoded on one line (safer to
+          # paste in the browser). Windows line endings are stripped either way.
+          key=$(printf '%s' "$NFSN_SSH_KEY" | tr -d '\r')
+          case "$key" in
+            -----BEGIN*) printf '%s\n' "$key" > ~/.ssh/deploy_key ;;
+            *) printf '%s' "$key" | tr -d ' \n' | base64 -d > ~/.ssh/deploy_key ;;
+          esac
           chmod 600 ~/.ssh/deploy_key
           printf '%s\n' "$NFSN_KNOWN_HOSTS" | tr -d '\r' > ~/.ssh/known_hosts
           ssh-keygen -y -f ~/.ssh/deploy_key > /dev/null \
