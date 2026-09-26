@@ -54,5 +54,6 @@ jobs:
         run: |
           rsync -rlz --delete --itemize-changes \
             --exclude '.git/' --exclude '.github/' --exclude '.gitignore' \
+            --exclude '.well-known/' \
             -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes" \
             ./ "$NFSN_USER@$NFSN_HOST:/home/public/"
