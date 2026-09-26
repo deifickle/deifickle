@@ -37,14 +37,22 @@ jobs:
         if: steps.check.outputs.ready == 'true'
         run: |
           mkdir -p ~/.ssh
-          printf '%s\n' "$NFSN_SSH_KEY" > ~/.ssh/deploy_key
+          # The key may be stored as-is or base64-encoded on one line (safer to
+          # paste in the browser). Windows line endings are stripped either way.
+          key=$(printf '%s' "$NFSN_SSH_KEY" | tr -d '\r')
+          case "$key" in
+            -----BEGIN*) printf '%s\n' "$key" > ~/.ssh/deploy_key ;;
+            *) printf '%s' "$key" | tr -d ' \n' | base64 -d > ~/.ssh/deploy_key ;;
+          esac
           chmod 600 ~/.ssh/deploy_key
-          printf '%s\n' "$NFSN_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          printf '%s\n' "$NFSN_KNOWN_HOSTS" | tr -d '\r' > ~/.ssh/known_hosts
+          ssh-keygen -y -f ~/.ssh/deploy_key > /dev/null \
+            || { echo "::error::NFSN_SSH_KEY is not a valid private key. Paste the whole nfsn_deploy file, BEGIN and END lines included."; exit 1; }
 
       - name: Copy site to /home/public
         if: steps.check.outputs.ready == 'true'
         run: |
           rsync -rlz --delete --itemize-changes \
             --exclude '.git/' --exclude '.github/' --exclude '.gitignore' \
-            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
+            -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes" \
             ./ "$NFSN_USER@$NFSN_HOST:/home/public/"
