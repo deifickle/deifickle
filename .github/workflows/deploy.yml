@@ -1,0 +1,50 @@
+# Copies the site to NearlyFreeSpeech.net whenever the release branch changes.
+# Setup (once) is described in README.md under "Automatic deploy".
+name: Deploy to NFSN
+
+on:
+  push:
+    branches: [release]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      NFSN_HOST: ${{ secrets.NFSN_HOST }}
+      NFSN_USER: ${{ secrets.NFSN_USER }}
+      NFSN_SSH_KEY: ${{ secrets.NFSN_SSH_KEY }}
+      NFSN_KNOWN_HOSTS: ${{ secrets.NFSN_KNOWN_HOSTS }}
+    steps:
+      - name: Check deploy settings
+        id: check
+        run: |
+          if [ -z "$NFSN_HOST" ] || [ -z "$NFSN_USER" ] || [ -z "$NFSN_SSH_KEY" ] || [ -z "$NFSN_KNOWN_HOSTS" ]; then
+            echo "::notice::Deploy skipped: NFSN_HOST, NFSN_USER, NFSN_SSH_KEY and NFSN_KNOWN_HOSTS secrets are not all set."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.ready == 'true'
+
+      - name: Set up SSH
+        if: steps.check.outputs.ready == 'true'
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$NFSN_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$NFSN_KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      - name: Copy site to /home/public
+        if: steps.check.outputs.ready == 'true'
+        run: |
+          rsync -rlz --delete --itemize-changes \
+            --exclude '.git/' --exclude '.github/' --exclude '.gitignore' \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
+            ./ "$NFSN_USER@$NFSN_HOST:/home/public/"
