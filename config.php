@@ -1,9 +1,9 @@
 <?php
 // Site settings. Edit these; nothing else needs changing to run the site.
 return [
-    'title'       => 'madptr',
+    'title'       => 'deifickle',
     'description' => 'Rants on computer graphics, programming and other stuff.',
-    'url'         => 'https://madptr.com',   // no trailing slash
+    'url'         => 'https://www.deifickle.com',   // no trailing slash
     'author'      => 'Abilash Joseph Rajarethinam',
     'logo'        => '/res/tri_logo.png',
     'timezone'    => 'Asia/Kolkata',     // used to show post dates

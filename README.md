@@ -1,4 +1,4 @@
-# madptr.com
+# deifickle.com
 
 The blog is plain Markdown files. A small PHP script (`index.php`) turns them into web pages when someone visits, so there is no generator to install and nothing to build.
 
