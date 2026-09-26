@@ -9,7 +9,7 @@ Recently I came across a programming pattern that has been there for a while cal
 
 ## What is Type Erasure? 
 
-As the name indicates, it erases or hides the *type information* completely from one part of the system to the other. The idea is quite easy to grasp if we have a basic understanding of [virtual functions]({{< ref "https://madptr.com/tags/virtual-function/" >}}). For ease of describing what it is, I will build it on the examples used in the previous chapters, particularly from this [post]({{< ref "2023-01-26-virtualFunc2" >}}) which is here again.
+As the name indicates, it erases or hides the *type information* completely from one part of the system to the other. The idea is quite easy to grasp if we have a basic understanding of [virtual functions](/tags/virtual-function/). For ease of describing what it is, I will build it on the examples used in the previous chapters, particularly from this [post](/posts/2023-01-26-virtualfunc2/) which is here again.
 
 
 ```c++

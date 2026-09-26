@@ -5,7 +5,7 @@ description: Enforcing traits
 tags: [CPP, virtual function, programming]
 ---
 
-From the previous [post]({{< ref "2023-01-26-virtualFunc2" >}}) you would've understood that declaring a **pure virtual** function converts a **class** to an **abstract class**. This opens numerous doors and gives us infinite options for structuring our project. We can get rid of cluttered or messed up code flow and enforce elegance to the code!
+From the previous [post](/posts/2023-01-26-virtualfunc2/) you would've understood that declaring a **pure virtual** function converts a **class** to an **abstract class**. This opens numerous doors and gives us infinite options for structuring our project. We can get rid of cluttered or messed up code flow and enforce elegance to the code!
 
 In games, we need various systems independent of each other to interact/converge in one or more instances. *GamePhysics*; has nothing to do with rendering, it has to bother about the movement and collision of various objects. Should it interact with *GameRenderer*? Yes, it has to, at least when the game is under development, we should be able to visualize the *bounding box*, the *dir vectors* etc of the objects. Thus, we need these two unrelated systems to interact. Likewise, there is no independent system in a game. This is true for almost all systems. Everything has to interact with everything else. There are very few instances where a system can work in complete isolation.
 
