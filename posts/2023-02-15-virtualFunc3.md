@@ -132,4 +132,4 @@ class Coin : public Renderable, Collidable, Collectable {
 ```
 As it is shown in the example code, `allRenderables` can hold any type that will implement the trait `Renderable`. It doesn't matter if they are derived from the same base class. In this context, they are derived from `Renderable` and hence `Renderable` is the base class. The same rule is applied to a `Collidable`, `Animatable`, `Collectable` etc. The idea is, we can refer to all the types under the trait as a reference to the trait itself. Traits pattern helps us in referencing and managing multiple unrelated types as the same type and processing them as a particular system.
 
-Was this series on [Virtual Functions](https://madptr.com/tags/virtual-function/) useful? Have any questions? Did I make any mistakes? Let me know on [Twitter](https://twitter.com/madptr) or [Mastodon](https://mastodon.gamedev.place/@madptr)!
+Was this series on [Virtual Functions](/tags/virtual-function/) useful? Have any questions? Did I make any mistakes? Let me know on [Twitter](https://twitter.com/madptr) or [Mastodon](https://mastodon.gamedev.place/@madptr)!
